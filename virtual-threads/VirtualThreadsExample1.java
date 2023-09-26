@@ -2,13 +2,13 @@ import java.util.concurrent.ThreadFactory;
 
 // Calculate executing time for running 100(MAX_SIZE) tasks to print message on Virtual Threads
 public class VirtualThreadsExample1 {
-    /* FIELDS */
+    /* Fields */
     private static int MAX_SIZE = 100;
 
     private ThreadFactory factory = Thread.ofVirtual().factory();
     private Thread[] threads;
 
-    /* METHODS */
+    /* Methods */
     // create virtual threads that have runnable task
     public void init() {
         threads = new Thread[MAX_SIZE];
@@ -33,7 +33,7 @@ public class VirtualThreadsExample1 {
         }
     }
 
-    /* MAIN METHOD */
+    /* Main Method */
     public static void main(String[] args) throws InterruptedException {
         VirtualThreadsExample1 example = new VirtualThreadsExample1();
 

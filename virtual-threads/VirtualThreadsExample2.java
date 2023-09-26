@@ -1,3 +1,4 @@
+// Calculate executing time for running 100(MAX_SIZE) tasks to print message on Virtual Threads
 public class VirtualThreadsExample2 {
     /* Fields */
     private static int MAX_SIZE = 100;
