@@ -14,7 +14,7 @@ public class VirtualThreadsExample1 {
         threads = new Thread[MAX_SIZE];
 
         for ( int i=0; i<MAX_SIZE; i++ ) {
-            String message = String.valueOf(i)+": running on virtual thread";
+            String message = String.valueOf(i+1)+": running on virtual thread";
             threads[i] = factory.newThread( () -> System.out.println(message) );
         }
     }
@@ -37,13 +37,13 @@ public class VirtualThreadsExample1 {
     public static void main(String[] args) throws InterruptedException {
         VirtualThreadsExample1 example = new VirtualThreadsExample1();
 
-        long start = System.currentTimeMillis();
-
         example.init();
+
+        long start = System.currentTimeMillis();
         example.runAllTask();
         example.wait2finish();
-        
         long end = System.currentTimeMillis();
+
         System.out.println("Execute time: "+(end-start)+"ms");
     }
 }
