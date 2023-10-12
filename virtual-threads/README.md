@@ -1,39 +1,68 @@
-# Virtual Threads
+# JEP 444: Virtual Threads
 
 ## 概要
 
-Virtual Threads は、アプリケーションの動作を仮想スレッドを活用して並列動作を実現できる。  
-仮想スレッドを使用することで、コンピュータリソースを効率的に使用することができる。  
+< comming soon >
 
-### アーキテクチャイメージ
+### 1. アーキテクチャイメージ
 
-`Virtual Thread <--> JVM Thread <--> Thread(OS)`  
-Virtual Thread と JVM Thread は、1対Mの関係。  
-JVM Thread と OS が管理するThread は、1対1の関係。
+< comming soon >
 
-### 17 vs 21
+### 2. Java 17 vs Java 21
 
-Java 17 ではプレビュー機能であったが、Java 21 では正式な実装となった。  
+* Java 17: プレビュー機能
+* Java 21: 正式実装  
 
-### 何が嬉しいのか
+### 3. 何が嬉しいのか
 
-従来の JVM Thread による実装は難易度が高く、バグの作り込み、デバッグのしずらさ、JVM の考慮など扱いにくさが多い。  
--> Virtual Thread の実行スケジューリングは JVM に任されているため、実装が容易になった。  
-Virtual Thread により実装の簡素化を実現し、よりアプリケーション本体に注力しやすく、スレッド活用によるパフォーマンス向上が期待できる。  
+< comming soon >  
 
-### サンプルプログラムについて
+### 4. サンプルプログラムについて
 
-以下の内容でサンプルプログラムを用意している。
+仮想スレッド と JVM スレッドによりタスクを実行するサンプルプログラム  
+以下の内容を理解・確認できる。  
 
-|項目|詳細|
-|:--|:--:|
-|Virtual Thread 数|100|
-|Task(1VT当たりの実行内容)|文字列出力(生成順番号付き)|
+* **パフォーマンス比較**(実行時間、メモリ使用量)
+* 実行順序の保証がされない  
 
-本サンプルプログラムで以下の特徴を理解できる。  
+また、スレッド上で実行するタスクは以下の通り。
 
-* Virtual Threads の実行スケジューリングは JVM に任されているため、実行順序は保証されない
-* 旧タイプの Thread(Classic Thread) 実行よりも高速な処理が実現しやすい
+* テキストファイル(sample.txt)に以下の文字列を書き込む処理
+  * Hello World! on Virtual Thread [番号]
+  * Hello World! on JVM Thread [番号]
+
+※番号：スレッドが生成された順番を示す
+
+#### 4.1. 実行方法
+
+実行環境により結果は異なる
+
+```bash
+$ javac ExampleJVMThread.java
+$ java ExampleJVMThread <スレッド数>
+===JVM Threads===
+  Executing Time: 30 (ms)
+  Used Memory: 19215688 (bytes)
+
+$ javac ExampleVirtualThread.java
+$ java ExampleVirtualThread
+===Virtual Threads===
+  Executing Time: 31 (ms)
+  Used Memory: 6307144 (bytes)
+```
+
+#### 4.2. サンプルプログラムの分類
+
+* Task.java: スレッドにて実行される処理(タスク)
+* ExampleJVMThread.java: JVMスレッドを使用したシンプルなサンプルプログラム
+* ExampleJVMThread2.java: FactoryインスタンスでJVMスレッドを生成したサンプルプログラム
+* ExampleVirtualThread.java: Virtualスレッドを使用したシンプルなサンプルプログラム
+* ExampleVirtualThread2.java: FactoryインスタンスでVirtualスレッドを生成したサンプルプログラム
+
+##### 注意事項
+
+実行環境により精度が大きく異なる可能性があるため、注意すること。  
+特に処理時間やメモリ使用量は、環境の影響を受けやすい。
 
 ## 参考
 
