@@ -1,22 +1,24 @@
-public class ExampleJVMThread {
+import java.util.concurrent.ThreadFactory;
+
+public class ExampleJVMThread2 {
 
     public static void main(String[] args) throws InterruptedException {
         Runtime runtime = Runtime.getRuntime();
         int numThreads = Integer.valueOf(args[0]);
 
+        ThreadFactory factory = Thread.ofPlatform().factory();
         Thread[] threads = new Thread[numThreads];
         
         long start = System.currentTimeMillis();
 
-        // create and run tasks on JVM Threads
+        // create JVM Threads
         for (int i = 0; i < numThreads; i++) {
-            // threads[i] = Thread.ofPlatform().unstarted(new Task("JVM Thread ["+String.valueOf(i)+"]"));
-            threads[i] = Thread.ofPlatform().start(new Task("JVM Thread ["+String.valueOf(i)+"]"));
+            threads[i] = factory.newThread( new Task("JVM Thread ["+String.valueOf(i)+"]") );
         }
-        // // run tasks on JVM Threads
-        // for (Thread thread : threads) {
-        //     thread.start();
-        // }
+        // run tasks on JVM Threads
+        for (Thread thread : threads) {
+            thread.start();
+        }
         // wait to finish the tasks
         for (Thread thread : threads) {
             thread.join();
