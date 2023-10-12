@@ -2,11 +2,11 @@
 
 ## 概要
 
-< comming soon >
+< coming soon >
 
 ### 1. アーキテクチャイメージ
 
-< comming soon >
+< coming soon >
 
 ### 2. Java 17 vs Java 21
 
@@ -15,14 +15,14 @@
 
 ### 3. 何が嬉しいのか
 
-< comming soon >  
+< coming soon >  
 
 ### 4. サンプルプログラムについて
 
 仮想スレッド と JVM スレッドによりタスクを実行するサンプルプログラム  
 以下の内容を理解・確認できる。  
 
-* **パフォーマンス比較**(実行時間、メモリ使用量)
+* **パフォーマンス比較** (実行時間、メモリ使用量)
 * 実行順序の保証がされない  
 
 また、スレッド上で実行するタスクは以下の通り。
@@ -45,7 +45,7 @@ $ java ExampleJVMThread <スレッド数>
   Used Memory: 19215688 (bytes)
 
 $ javac ExampleVirtualThread.java
-$ java ExampleVirtualThread
+$ java ExampleVirtualThread <スレッド数>
 ===Virtual Threads===
   Executing Time: 31 (ms)
   Used Memory: 6307144 (bytes)
