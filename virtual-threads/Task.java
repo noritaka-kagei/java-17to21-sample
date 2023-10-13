@@ -2,7 +2,7 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
-// This task executing i/o process
+// This task executing disk i/o process
 public class Task implements Runnable {
     private String additionalMsg;
 
